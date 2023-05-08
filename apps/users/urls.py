@@ -1,9 +1,9 @@
 from rest_framework.routers import DefaultRouter
 
-from apps.posts.views import PostAPIViewSet
+from apps.users.views import UserAPIViewSet
 
 
 router = DefaultRouter()
-router.register('posts', PostAPIViewSet,"api_posts")
+router.register('users', UserAPIViewSet,"api_users")
 
 urlpatterns = router.urls
