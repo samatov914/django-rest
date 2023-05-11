@@ -19,6 +19,11 @@ class UserRegisterSerializer(serializers.ModelSerializer):
         model = User
         fields = ('username', 'first_name', 'last_name', 'email', 'phone_number', 'profile_image', 'password', 'password2')
     
+    def validate(self, attrs):
+        if attrs ['password'] != attrs ['password2']:
+            raise serializers.ValidationError({"password" : 'Пароли отличаются '})
+        return attrs
+
     def create(self, validated_data):
         if validated_data['password'] == validated_data['password2']:
             user = User.objects.create(
